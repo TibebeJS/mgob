@@ -30,7 +30,7 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 	
 		body := &bytes.Buffer{}
 		writer := multipart.NewWriter(body)
-		part, err := writer.CreateFormFile(filename, filepath.Base(file.Name()))
+		part, err := writer.CreateFormFile('document', filepath.Base(file.Name()))
 	
 		if err != nil {
 			log.Fatal(err)
@@ -38,7 +38,7 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 	
 		io.Copy(part, file)
 		writer.Close()
-		request, err := http.NewRequest("POST", , body)
+		request, err := http.NewRequest("POST", url, body)
 	
 		if err != nil {
 			log.Fatal(err)
