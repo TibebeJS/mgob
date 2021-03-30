@@ -18,6 +18,9 @@ MGOB is a MongoDB backup automation tool built with Go.
 * http file server for local backups and logs
 * distributed as an Alpine Docker image
 
+### Now Available:
+* Telegram Notifications
+
 #### Install
 
 MGOB is available on Docker Hub at [stefanprodan/mgob](https://hub.docker.com/r/stefanprodan/mgob/).

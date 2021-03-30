@@ -22,6 +22,7 @@ type Plan struct {
 	SFTP       *SFTP       `yaml:"sftp"`
 	SMTP       *SMTP       `yaml:"smtp"`
 	Slack      *Slack      `yaml:"slack"`
+	Telegram   *Telegram   `yaml:"telegram"`
 }
 
 type Target struct {
@@ -100,6 +101,11 @@ type Slack struct {
 	Channel  string `yaml:"channel"`
 	Username string `yaml:"username"`
 	WarnOnly bool   `yaml:"warnOnly"`
+}
+
+type Telegram struct {
+	Token      string `yaml:"token"`
+	Channel  string `yaml:"channel"`
 }
 
 func LoadPlan(dir string, name string) (Plan, error) {

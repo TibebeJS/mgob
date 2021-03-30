@@ -11,5 +11,8 @@ func SendNotification(subject string, body string, warn bool, plan config.Plan) 
 	if plan.Slack != nil {
 		err = sendSlackNotification(subject, body, warn, plan.Slack)
 	}
+	if plan.Telegram != nil {
+		err = sendTelegramNotification(subject, body, plan.Telegram)
+	}
 	return err
 }
