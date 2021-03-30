@@ -4,15 +4,14 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"net"
 	"os"
 	"path/filepath"
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/pkg/sftp"
-	"golang.org/x/crypto/ssh"
-
+	"net/http"
+	"encoding/json"
+	"bytes"
 	"github.com/stefanprodan/mgob/pkg/config"
 )
 
