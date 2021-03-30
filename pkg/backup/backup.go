@@ -135,7 +135,7 @@ func Run(plan config.Plan, conf *config.AppConfig) (Result, error) {
 		if err != nil {
 			return res, err
 		} else {
-			log.WithField("plan", plan.Name).Infof("Rclone upload finished %v", rcloneOutput)
+			log.WithField("plan", plan.Name).Infof("Telegram upload finished %v", rcloneOutput)
 		}
 	}
 

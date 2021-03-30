@@ -23,7 +23,7 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 		}
 		defer file.Close()
 	
-		url := "https://api.telegram.org/bot"+plan.Token+"/sendDocument?caption="+filename+"&chat_id="+plan.Channel
+		url := "https://api.telegram.org/bot"+plan.Telegram.Token+"/sendDocument?caption="+filename+"&chat_id="+plan.Telegram.Channel
 	
 		body := &bytes.Buffer{}
 		writer := multipart.NewWriter(body)
@@ -60,6 +60,6 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 
 	t2 := time.Now()
 	msg := fmt.Sprintf("Telegram upload finished `%v` -> `%v` Duration: %v",
-		filename, "Chat ID: " + plan.Channel, t2.Sub(t1))
+		filename, "Chat ID: " + plan.Telegram.Channel, t2.Sub(t1))
 	return msg, nil
 }
