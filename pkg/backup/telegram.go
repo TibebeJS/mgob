@@ -52,7 +52,7 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 		}
 		defer response.Body.Close()
 	
-		content, err := ioutil.ReadAll(response.Body)
+		_, err := ioutil.ReadAll(response.Body)
 	
 		if err != nil {
 			return "", err
