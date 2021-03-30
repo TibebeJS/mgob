@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"mime/multipart"
 	"net/http"
 	"bytes"
 	"github.com/stefanprodan/mgob/pkg/config"
@@ -19,7 +20,7 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 		file, err := os.Open(filename)
 	
 		if err != nil {
-			return nil, err
+			return "", err
 		}
 		defer file.Close()
 	
@@ -27,10 +28,10 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 	
 		body := &bytes.Buffer{}
 		writer := multipart.NewWriter(body)
-		part, err := writer.CreateFormFile('document', filepath.Base(file.Name()))
+		part, err := writer.CreateFormFile("document", filepath.Base(file.Name()))
 	
 		if err != nil {
-			log.Fatal(err)
+			return "", err
 		}
 	
 		io.Copy(part, file)
@@ -38,7 +39,7 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 		request, err := http.NewRequest("POST", url, body)
 	
 		if err != nil {
-			return nil, err
+			return "", err
 		}
 	
 		request.Header.Add("Content-Type", writer.FormDataContentType())
@@ -47,14 +48,14 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 		response, err := client.Do(request)
 	
 		if err != nil {
-			return nil, err
+			return "", err
 		}
 		defer response.Body.Close()
 	
 		content, err := ioutil.ReadAll(response.Body)
 	
 		if err != nil {
-			return nil, err
+			return "", err
 		}
 	
 
