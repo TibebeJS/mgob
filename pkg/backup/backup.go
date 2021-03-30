@@ -129,6 +129,15 @@ func Run(plan config.Plan, conf *config.AppConfig) (Result, error) {
 			log.WithField("plan", plan.Name).Infof("Rclone upload finished %v", rcloneOutput)
 		}
 	}
+	
+	if plan.Telegram != nil {
+		rcloneOutput, err := telegramUpload(file, plan)
+		if err != nil {
+			return res, err
+		} else {
+			log.WithField("plan", plan.Name).Infof("Rclone upload finished %v", rcloneOutput)
+		}
+	}
 
 	t2 := time.Now()
 	res.Status = 200

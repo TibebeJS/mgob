@@ -63,6 +63,6 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 
 	t2 := time.Now()
 	msg := fmt.Sprintf("Telegram upload finished `%v` -> `%v` Duration: %v",
-		filename, "Chat ID: " + plan.channel, t2.Sub(t1))
+		filename, "Chat ID: " + plan.Channel, t2.Sub(t1))
 	return msg, nil
 }
