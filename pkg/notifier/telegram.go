@@ -20,11 +20,11 @@ func sendTelegramNotification(subject string, body string, config *config.Telegr
 		reqBody := struct {
 			ChatID string  `json:"chat_id"`
 			Text   string `json:"text"`
-			ParseMode String `json:"parse_mode"`
+			ParseMode string `json:"parse_mode"`
 		}{
 			config.Channel,
 			msg,
-			"Markdown"
+			"Markdown",
 		}
 	
 		reqBytes, err := json.Marshal(reqBody)
