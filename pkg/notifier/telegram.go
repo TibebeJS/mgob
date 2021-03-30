@@ -14,7 +14,7 @@ import (
 
 func sendTelegramNotification(subject string, body string, config *config.Telegram) error {
 
-	msg := "<b>Subject:</b> " + subject + "\r\n\r\n\r\n" +
+	msg := "<b>Subject:</b>\n\r" + subject + "\r\n\r\n\r" +
 		"<i>" + body + "</i>\r\n"
 
 		reqBody := struct {

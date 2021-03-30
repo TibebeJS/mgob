@@ -24,7 +24,7 @@ func telegramUpload(filename string, plan config.Plan) (string, error) {
 		}
 		defer file.Close()
 	
-		url := "https://api.telegram.org/bot"+plan.Telegram.Token+"/sendDocument?caption="+filename+"&chat_id="+plan.Telegram.Channel
+		url := "https://api.telegram.org/bot"+plan.Telegram.Token+"/sendDocument?caption=Backup%20"+file.Name()+"&chat_id="+plan.Telegram.Channel
 	
 		body := &bytes.Buffer{}
 		writer := multipart.NewWriter(body)
