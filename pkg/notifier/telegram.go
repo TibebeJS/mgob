@@ -14,8 +14,8 @@ import (
 
 func sendTelegramNotification(subject string, body string, config *config.Telegram) error {
 
-	msg := "Subject: " + subject + "\r\n\r\n" +
-		body + "\r\n"
+	msg := "**Subject:** " + subject + "\r\n\r\n\r\n" +
+		"__" + body + "__\r\n"
 
 		reqBody := struct {
 			ChatID string  `json:"chat_id"`
